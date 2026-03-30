@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Message Queue Dashboard</title>
+    <meta http-equiv="refresh" content="2">
+    <style>
+        body { font-family: Arial; margin: 20px; }
+        h2 { color: #333; }
+
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin-bottom: 30px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .ready { background-color: #e7f3ff; }
+        .progress { background-color: #fff3cd; }
+        .done { background-color: #d4edda; }
+    </style>
+</head>
+<body>
+
+<h2>Message Queue</h2>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Payload</th>
+        <th>Priority</th>
+        <th>Status</th>
+        <th>Retries</th>
+    </tr>
+
+    {% for msg in messages %}
+    <tr class="{{ msg[3].lower() }}">
+        <td>{{ msg[0] }}</td>
+        <td>{{ msg[1] }}</td>
+        <td>{{ msg[2] }}</td>
+        <td>{{ msg[3] }}</td>
+        <td>{{ msg[4] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<h2>Dead Letter Queue</h2>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Payload</th>
+    </tr>
+
+    {% for msg in dlq %}
+    <tr>
+        <td>{{ msg[0] }}</td>
+        <td>{{ msg[1] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>
