@@ -1,2 +1,27 @@
 # Message-Queue-System
-To develop a lightweight, asynchronous message queue. You must decouple producers from consumers by implementing a robust messaging model Point-to-Point. The system must guarantee reliability through message persistence (disk/DB) and an acknowledgment (ACK) mechanism to ensure that if a consumer fails, the message is not lost.
+A lightweight Message Queue System built using Python, SQLite, and Streamlit, demonstrating core concepts of distributed systems such as priority-based processing, retries, fault tolerance, and Dead Letter Queue (DLQ).
+
+**Features**
+1.Priority-based Processing
+   High (1) → Medium (2) → Low (3)
+   FIFO ordering within same priority
+2.Retry Mechanism
+   Messages are retried on failure
+   Configurable retry count
+3.Dead Letter Queue (DLQ)
+   Messages exceeding retry limit are moved to DLQ
+   Prevents blocking of queue
+4.Acknowledgment System
+   Messages marked as completed after successful processing
+5.Persistent Storage
+   SQLite ensures no message loss
+6.Interactive Dashboard
+   Built using Streamlit
+   View producer, queue, and DLQ in real-time
+
+**Tech Stack**
+  **-**Python
+  **-**SQLite
+  **-**Streamlit
+  **-**Pandas
+
